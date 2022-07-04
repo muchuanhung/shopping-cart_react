@@ -1,0 +1,70 @@
+@import "./../styles/color.scss";
+@import "./../styles/breakpoint.scss";
+@import "./../styles/shadow.scss";
+@import "./../styles/reset.scss";
+
+/* -- ProgressControl -- */
+.form-btn-groups {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  margin: 1rem 0;
+  padding: 24px 0;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  border-top: 1px solid var(--border-light-color);
+  @include pc-media {
+    position: unset;
+  }
+  &__btn-wrapper {
+    flex-grow: 1;
+  }
+}
+
+.form-btn-groups__btn {
+  height: 40px;
+  border-radius: 8px;
+  background-color: $rose-pink;
+  color: $white;
+  &:hover {
+    opacity: 0.9;
+    font-weight: 600;
+    @extend %standard-boxshadow;
+  }
+  &:active {
+    opacity: 1;
+  }
+}
+
+.form-btn-groups__btn__btn-submit {
+  height: 40px;
+  border-radius: 8px;
+  background-color: $rose-pink;
+  color: $white;
+  flex-grow: 1;
+}
+
+.form-btn-groups__btn__btn-next {
+  height: 40px;
+  border-radius: 8px;
+  background-color: $rose-pink;
+  color: $white;
+  flex-grow: 1;
+}
+
+.form-btn-groups__btn__btn-back {
+  background-color: var(--bg-color);
+  color: var(--body-color);
+  &:hover {
+    box-shadow: unset;
+  }
+  &:active {
+    color: $rose-pink;
+  }
+}
+
+.arrow-symbol {
+  font-size: 20px;
+}

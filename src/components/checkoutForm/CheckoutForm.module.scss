@@ -1,0 +1,219 @@
+@import "./../styles/color.scss";
+@import "./../styles/breakpoint.scss";
+@import "./../styles/shadow.scss";
+@import "./../styles/reset.scss";
+
+/* -- CheckoutForm -- */
+
+/* form-group */
+form {
+  margin-bottom: 16px;
+  @include pc-media {
+    max-width: 50%;
+  }
+  input,
+  select {
+    height: 40px;
+    padding: 12px 1rem;
+    font-size: 12px;
+    border-radius: 4px;
+    border: 1px solid var(--placeholder-color);
+    background-color: var(--bg-color);
+    color: var(--body-color);
+  }
+  input {
+    &::placeholder {
+      color: var(--placeholder-color);
+    }
+    &[type="radio"] {
+      display: none;
+    }
+  }
+  .select-wrapper {
+    position: relative;
+    z-index: 0;
+    &::after {
+      content: "";
+      position: absolute;
+      right: 16px;
+      bottom: 16px;
+      z-index: -1;
+      /* create drop-down triangle */
+      border-style: solid;
+      border-width: 5px 5px 0 5px;
+      border-color: var(--body-color) transparent transparent transparent;
+    }
+  }
+  select {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 100%;
+    background-color: transparent;
+    color: var(--placeholder-color);
+    cursor: pointer;
+    &:valid {
+      color: var(--body-color);
+    }
+  }
+  @include pc-media {
+    position: relative;
+  }
+}
+
+.form-part__form-row__flex-grow-1 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.form-part__form-row__flex-grow-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  flex-basis: 0;
+  flex-grow: 2;
+}
+
+.form-part__form-row__flex-grow-1-pc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  @include pc-media {
+    flex: 1 0 auto;
+  }
+}
+
+.form-part__form-row__flex-grow-2-pc {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  @include pc-media {
+    flex: 2 0 auto;
+  }
+}
+
+.form-part {
+  min-height: 320px;
+  @include pc-media {
+    min-height: 40vh;
+  }
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+  }
+  &__form-row {
+    margin-top: 24px;
+    font-size: 12px;
+    color: var(--form-description-color);
+    display: flex;
+    gap: 30px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    &__form-unit {
+      flex-grow: 1;
+      flex-basis: $pad-width;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+  }
+
+  &__form-shipping-option {
+    position: relative;
+    border: 1px solid var(--border-light-color);
+    border-radius: 4px;
+    padding: 11px 20px;
+    flex-grow: 1;
+    flex-basis: $pad-width;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    cursor: pointer;
+
+    &__radio-circle {
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      border: 1px solid var(--placeholder-color);
+    }
+
+    &__shipping-desc {
+      display: flex;
+      flex-direction: column;
+      &__shipping-subtitle {
+        display: inline-block;
+        color: var(--body-color);
+      }
+    }
+  }
+
+  input[type="radio"]:checked ~ &__form-shipping-option {
+    &::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      border: 1px solid var(--placeholder-color);
+      border-radius: 4px;
+    }
+    .form-part__form-shipping-option__radio-circle {
+      box-shadow: inset 0 0 0 6px var(--body-color);
+    }
+  }
+}
+
+.form-btn-groups {
+  position: absolute;
+  width: 100%;
+  top: 100%;
+  margin: 1rem 0;
+  padding: 24px 0;
+  font-size: 16px;
+  display: flex;
+  justify-content: space-between;
+  gap: 30px;
+  border-top: 1px solid var(--border-light-color);
+  @include pc-media {
+    position: unset;
+  }
+  &__btn-wrapper {
+    flex-grow: 1;
+  }
+
+  &__btn {
+    height: 40px;
+    border-radius: 8px;
+    background-color: $rose-pink;
+    color: $white;
+    &:hover {
+      opacity: 0.9;
+      font-weight: 600;
+      @extend %standard-boxshadow;
+    }
+    &:active {
+      opacity: 1;
+    }
+    .arrow-symbol {
+      font-size: 20px;
+    }
+    &.btn-next,
+    &.btn-submit {
+      flex-grow: 1;
+    }
+    &.btn-back {
+      background-color: var(--bg-color);
+      color: var(--body-color);
+      &:hover {
+        box-shadow: unset;
+      }
+      &:active {
+        color: $rose-pink;
+      }
+    }
+  }
+}

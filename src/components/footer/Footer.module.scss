@@ -1,0 +1,51 @@
+@import "./../styles/color.scss";
+@import "./../styles/breakpoint.scss";
+@import "./../styles/shadow.scss";
+@import "./../styles/reset.scss";
+
+/* -- Footer -- */
+footer {
+  display: none;
+  background-color: var(--footer-bg);
+  padding: 40px 24px;
+  color: var(--footer-color);
+
+  @include pc-media {
+    display: block;
+  }
+}
+
+.footer-container__brand-name {
+  display: inline-block;
+  font-family: $brand-font-family;
+  color: var(--footer-color-title);
+  font-weight: 900;
+  font-size: 18px;
+  letter-spacing: 0.75px;
+}
+
+.footer-container {
+  &__info-column {
+    &__title {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--footer-color-title);
+    }
+
+    &__info-list {
+      margin-top: 24px;
+      line-height: 150%;
+
+      &__item {
+        &__link {
+          &:hover {
+            color: var(--footer-color-title);
+          }
+          &:active {
+            color: $rose-pink;
+          }
+        }
+      }
+    }
+  }
+}
