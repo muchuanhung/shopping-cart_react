@@ -10,12 +10,6 @@
   border-radius: 8px;
   border: 1px solid var(--border-light-color);
   background-color: var(--shopping-cart-bg);
-  @include pc-media {
-    position: absolute;
-    right: 24px;
-    left: 57%;
-    top: 90px;
-  }
 
   .product-list {
     flex-direction: column;
