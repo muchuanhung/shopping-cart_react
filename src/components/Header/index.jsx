@@ -9,7 +9,7 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import logo from "../../assets/image/logo.svg";
 
-export function Header() {
+const Header = () => {
   return (
     <header className={styles.Header}>
       <div className={styles["header__container"]}>
@@ -77,12 +77,12 @@ export function Header() {
         </div>
 
         <div className={styles["header-actions__dark-mode-toggle"]}>
-          <a href="/#" class={styles["header-actions__header-link"]}>
+          <a href="/#" className={styles["header-actions__header-link"]}>
             <span className={styles["nav-icon"]}>
               <FontAwesomeIcon icon={faSearch}> </FontAwesomeIcon>
             </span>
           </a>
-          <a href="/#" class={styles["header-actions__header-link"]}>
+          <a href="/#" className={styles["header-actions__header-link"]}>
             <span className={styles["nav-icon"]}>
               <FontAwesomeIcon icon={faCartShopping}> </FontAwesomeIcon>
             </span>
@@ -98,4 +98,6 @@ export function Header() {
       </div>
     </header>
   );
-}
+};
+
+export default Header;

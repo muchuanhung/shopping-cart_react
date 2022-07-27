@@ -2,7 +2,7 @@ import styles from "./App.scss";
 import { HomePage } from "./pages/home";
 import { Route, BrowserRouter } from "react-router-dom";
 
-function App() {
+const App = () => {
   return (
     <div className={styles.App}>
       <BrowserRouter>
@@ -10,6 +10,6 @@ function App() {
       </BrowserRouter>
     </div>
   );
-}
+};
 
 export default App;

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./CheckoutForm2.module.scss";
 
-export const CheckoutForm2 = () => {
+const CheckoutForm2 = () => {
   return (
     <form action="" className={styles.Form}>
       <div className={styles["form-part"]}>
@@ -47,3 +47,5 @@ export const CheckoutForm2 = () => {
     </form>
   );
 };
+
+export default CheckoutForm2;

@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./CheckoutForm1.module.scss";
 
-export const CheckoutForm1 = () => {
+const CheckoutForm1 = () => {
   return (
     <form action="" className={styles.Form}>
       <div className={styles["form-part"]}>
@@ -25,29 +25,9 @@ export const CheckoutForm1 = () => {
                 styles["form-part__form-shipping-option__radio-circle"]
               }
             ></div>
-            <div
-              className={
-                styles[
-                  "form-part__form-shipping-option__shipping-desc flex-grow-1"
-                ]
-              }
-            >
-              <span
-                className={
-                  styles[
-                    "form-part__form-shipping-option__shipping-desc__shipping-subtitle"
-                  ]
-                }
-              >
-                標準運送
-              </span>
-              <span
-                class="
-                form-part__form-shipping-option__shipping-desc__shipping-time
-              "
-              >
-                約 3-7 個工作天
-              </span>
+            <div className="d-flex">
+              <span className="inline-block text-black">標準運送</span>
+              <span>約 3-7 個工作天</span>
             </div>
             <div
               className={
@@ -82,24 +62,8 @@ export const CheckoutForm1 = () => {
                 ]
               }
             >
-              <span
-                className={
-                  styles[
-                    "form-part__form-shipping-option__shipping-desc__shipping-subtitle"
-                  ]
-                }
-              >
-                DHL 貨運
-              </span>
-              <span
-                className={
-                  styles[
-                    "form-part__form-shipping-option__shipping-desc__shipping-time"
-                  ]
-                }
-              >
-                48 小時內送達
-              </span>
+              <span className="inline-block text-black">DHL 貨運</span>
+              <span>48 小時內送達</span>
             </div>
             <div
               className={
@@ -114,3 +78,5 @@ export const CheckoutForm1 = () => {
     </form>
   );
 };
+
+export default CheckoutForm1;

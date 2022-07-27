@@ -24,3 +24,10 @@ main {
     font-weight: 700;
   }
 }
+
+form {
+  margin-bottom: 16px;
+  @include pc-media {
+    max-width: 100%;
+  }
+}

@@ -5,18 +5,18 @@ import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
 import product1 from "../../assets/image/product-01.jpg";
 import product2 from "../../assets/image/product-02.jpg";
 
-export function CheckoutShoppingCart() {
+const CheckoutShoppingCart = () => {
   return (
     <div className={styles.CheckoutShoppingCart}>
       <div className={styles["shopping-cart__shopping-list"]}>
         <div className={styles["product-list"]} data-total-price="0">
           <div
-            class={styles["product-container"]}
+            className={styles["product-container"]}
             data-count="0"
             data-price="3999"
           >
             <img
-              class={styles["img-container"]}
+              className={styles["img-container"]}
               src={product1}
               alt="product1"
             />
@@ -37,12 +37,12 @@ export function CheckoutShoppingCart() {
             </div>
           </div>
           <div
-            class={styles["product-container"]}
+            className={styles["product-container"]}
             data-count="0"
             data-price="1299"
           >
             <img
-              class={styles["img-container"]}
+              className={styles["img-container"]}
               src={product2}
               alt="product2"
             />
@@ -75,4 +75,6 @@ export function CheckoutShoppingCart() {
       </div>
     </div>
   );
-}
+};
+
+export default CheckoutShoppingCart;

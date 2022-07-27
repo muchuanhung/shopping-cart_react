@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./CheckoutForm.module.scss";
 
-export const CheckoutForm = () => {
+const CheckoutForm = () => {
   return (
     <form action="" className={styles.Form}>
       <div className={styles["form-part"]}>
@@ -46,8 +46,7 @@ export const CheckoutForm = () => {
           <div className={styles["form-part__form-row__flex-grow-1-pc"]}>
             <label for="city">縣市</label>
             <div className={styles["select-wrapper2"]}>
-             
-              <select  name="city" id="city" required>
+              <select name="city" id="city" required>
                 <option value="" selected disabled>
                   請選擇縣市
                 </option>
@@ -59,8 +58,6 @@ export const CheckoutForm = () => {
                 <option value="kaohsiung">高雄市</option>
                 <option value="more">更多...</option>
               </select>
-             
-          
             </div>
           </div>
           <div className={styles["form-part__form-row__flex-grow-2-pc"]}>
@@ -77,3 +74,5 @@ export const CheckoutForm = () => {
     </form>
   );
 };
+
+export default CheckoutForm;

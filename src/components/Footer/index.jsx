@@ -2,14 +2,14 @@ import React from "react";
 import styles from "./Footer.module.scss";
 import logo from "../../assets/image/logo.svg";
 
-export function Footer() {
+const Footer = () => {
   return (
     <footer className={styles.Footer}>
       <div className="d-flex justify-content-between py-3">
         <div className="d-flex align-items-center">
           <a href="/#" className="d-flex align-items-center">
             <img src={logo} alt="logo" className="px-3" />
-            <div class={styles["footer-container__brand-name"]}>ALPHA Shop</div>
+            <div Name={styles["footer-container__brand-name"]}>ALPHA Shop</div>
           </a>
         </div>
 
@@ -224,4 +224,6 @@ export function Footer() {
       </div>
     </footer>
   );
-}
+};
+
+export default Footer;
