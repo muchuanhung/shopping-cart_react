@@ -48,4 +48,4 @@ const CheckoutForm2 = () => {
   );
 };
 
-export default CheckoutForm2;
+export default React.memo(CheckoutForm2);

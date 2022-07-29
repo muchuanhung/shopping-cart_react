@@ -8,6 +8,23 @@ import CheckoutShoppingCart from "../../components/checkoutShoppingCart";
 import Stepper from "../../components/stepper";
 import styles from "../../pages/home/HomePage.module.css";
 
+const cartItems = [
+  {
+    id: "1",
+    name: "貓咪罐罐",
+    img: "https://picsum.photos/300/300?text=1",
+    price: 100,
+    quantity: 2,
+  },
+  {
+    id: "2",
+    name: "貓咪干干",
+    img: "https://picsum.photos/300/300?text=2",
+    price: 200,
+    quantity: 1,
+  },
+];
+
 export const HomePage = () => {
   const [step, setStep] = React.useState(1);
   const prevStep = () => {
@@ -46,7 +63,7 @@ export const HomePage = () => {
           </section>
           {/* <ProgressControl/> */}
         </div>
-        <CheckoutShoppingCart />
+        <CheckoutShoppingCart items={cartItems} />
       </div>
 
       <Footer />
