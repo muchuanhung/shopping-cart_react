@@ -54,4 +54,4 @@ const Stepper = (props) => {
   );
 };
 
-export default Stepper;
+export default React.memo(Stepper);

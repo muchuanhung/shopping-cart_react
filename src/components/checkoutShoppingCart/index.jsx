@@ -6,31 +6,32 @@ import style from "./CheckoutShoppingCart.module.scss";
 const CheckoutShoppingCart = React.memo((props) => {
   const { items } = props;
   return (
-                    <FontAwesomeIcon icon={faPlus}> </FontAwesomeIcon>
-    <div className={cx(style.cart, "m-3")}>
-      <h6>購物欄</h6>
-      {items.map((item) => {
-        return (
-          <LineItem
-            key={item.id}
-            name={item.name}
-            image={item.img}
-            initAmount={item.quantity}
-            money={item.price}
-          />
-        );
-      })}
-      <hr />
-      <div className="d-flex justify-content-between">
-        <p>運費</p>
-        <p>1000</p>
+    <>
+      <div className={cx(style.cart, "m-3")}>
+        <h6>購物欄</h6>
+        {items.map((item) => {
+          return (
+            <LineItem
+              key={item.id}
+              name={item.name}
+              image={item.img}
+              initAmount={item.quantity}
+              money={item.price}
+            />
+          );
+        })}
+        <hr />
+        <div className="d-flex justify-content-between">
+          <p>運費</p>
+          <p>1000</p>
+        </div>
+        <hr />
+        <div className="d-flex justify-content-between">
+          <p>小計</p>
+          <p>1000</p>
+        </div>
       </div>
-      <hr />
-      <div className="d-flex justify-content-between">
-        <p>小計</p>
-        <p>1000</p>
-      </div>
-    </div>
+    </>
   );
 });
 
