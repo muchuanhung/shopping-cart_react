@@ -9,7 +9,9 @@ const Footer = () => {
         <div className="d-flex align-items-center">
           <a href="/#" className="d-flex align-items-center">
             <img src={logo} alt="logo" className="px-3" />
-            <div Name={styles["footer-container__brand-name"]}>ALPHA Shop</div>
+            <div className={styles["footer-container__brand-name"]}>
+              ALPHA Shop
+            </div>
           </a>
         </div>
 

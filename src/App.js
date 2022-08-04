@@ -1,5 +1,5 @@
 import styles from "./App.scss";
-import { HomePage } from "./pages/home/HomePage";
+import HomePage from "./pages/home";
 import { Route, BrowserRouter } from "react-router-dom";
 
 const App = () => {
