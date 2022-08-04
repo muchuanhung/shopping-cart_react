@@ -8,7 +8,7 @@ const CheckoutForm = () => {
         <h2 className={styles["form-part__title"]}>寄送地址</h2>
         <div className={styles["form-part__form-row"]}>
           <div className={styles["form-part__form-row__flex-grow-1"]}>
-            <label for="salutation">稱謂</label>
+            <label htmlFor="salutation">稱謂</label>
             <div className={styles["select-wrapper"]}>
               <select name="salutation" id="salutation">
                 <option value="Mr">先生</option>
@@ -18,13 +18,13 @@ const CheckoutForm = () => {
             </div>
           </div>
           <div className={styles["form-part__form-row__flex-grow-2"]}>
-            <label for="name">姓名</label>
+            <label htmlFor="name">姓名</label>
             <input type="text" name="name" id="name" placeholder="請輸入姓名" />
           </div>
         </div>
         <div className={styles["form-part__form-row"]}>
           <div className={styles["form-part__form-row__flex-grow-1-pc"]}>
-            <label for="phone">電話</label>
+            <label htmlFor="phone">電話</label>
             <input
               type="text"
               name="phone"
@@ -33,7 +33,7 @@ const CheckoutForm = () => {
             />
           </div>
           <div className={styles["form-part__form-row__flex-grow-1-pc"]}>
-            <label for="email">E-Mail</label>
+            <label htmlFor="email">E-Mail</label>
             <input
               type="text"
               name="email"
@@ -44,12 +44,10 @@ const CheckoutForm = () => {
         </div>
         <div className={styles["form-part__form-row"]}>
           <div className={styles["form-part__form-row__flex-grow-1-pc"]}>
-            <label for="city">縣市</label>
+            <label htmlFor="city">縣市</label>
             <div className={styles["select-wrapper2"]}>
               <select name="city" id="city" required>
-                <option value="" selected disabled>
-                  請選擇縣市
-                </option>
+                <option value="selected disabled">請選擇縣市</option>
                 <option value="taipei">台北市</option>
                 <option value="new-taipei">新北市</option>
 
@@ -61,7 +59,7 @@ const CheckoutForm = () => {
             </div>
           </div>
           <div className={styles["form-part__form-row__flex-grow-2-pc"]}>
-            <label for="address">地址</label>
+            <label htmlFor="address">地址</label>
             <input
               type="text"
               name="address"
