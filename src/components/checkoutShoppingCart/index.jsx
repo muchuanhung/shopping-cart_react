@@ -32,6 +32,7 @@ const CheckoutShoppingCart = React.memo((props) => {
     setItems((prev) => prev.filter((item) => item.id !== id));
   }, []);
 
+  // 下方的運算建議使用 useMemo 包起來，好處是只有 items 有改變時，才會重新計算
   const total = items.reduce((prev, cur) => prev + cur.price * cur.quantity, 0);
 
   const listItem = items.map((item) => {

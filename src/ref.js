@@ -1,10 +1,8 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 import React from "react";
 import cx from "classnames";
-import style from "./CheckoutShoppingCart.module.scss";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faMinus, faPlus } from "@fortawesome/free-solid-svg-icons";
-import { useCartContext } from "../../context/CartContext";
+import style from "./cart.module.scss";
+import { useCartContext } from "../CartContext";
 
 type LineItemProps = {
   name: string,
@@ -13,7 +11,6 @@ type LineItemProps = {
   money: number,
 };
 
-// 下方的兩個函示建議使用 useCallback 包起來，這樣才不會因為組件重新 render 時，又重新宣告一次。
 const LineItem: React.FC<LineItemProps> = React.memo((props) => {
   const { name, image, initAmount, money } = props;
   const [amount, setAmount] = React.useState(initAmount);
@@ -21,6 +18,7 @@ const LineItem: React.FC<LineItemProps> = React.memo((props) => {
 
   const addAmount = () => {
     setAmount(amount + 1);
+    setTotal((prve) => prve + money);
   };
 
   const reduceAmount = () => {
@@ -32,27 +30,26 @@ const LineItem: React.FC<LineItemProps> = React.memo((props) => {
   return (
     <div className="m-3 d-flex justify-content-between">
       <img className={style.product_img} alt="img fail" src={image} />
-      <div className="d-flex flex-column justify-content-between mx-4 my-2">
+      <div className="d-flex flex-column justify-content-between mt-2 mb-4">
         <p>{name}</p>
         <div
           className={cx(
             "d-flex",
-
             "justify-content-between",
             "align-items-center",
             style.amount_control
           )}
         >
-          <FontAwesomeIcon
-            icon={faMinus}
-            onClick={reduceAmount}
-          ></FontAwesomeIcon>
+          <i className="fa-solid fa-circle-plus fa-lg" onClick={addAmount} />
           <div className="ml-3 mr-3">{amount}</div>
-          <FontAwesomeIcon icon={faPlus} onClick={addAmount}></FontAwesomeIcon>
+          <i
+            className="fa-solid fa-circle-minus fa-lg"
+            onClick={reduceAmount}
+          />
         </div>
       </div>
 
-      <div className="ml-3 mt-3">{money}</div>
+      <div className="ml-3 mt-3">{money * amount}</div>
     </div>
   );
 });
