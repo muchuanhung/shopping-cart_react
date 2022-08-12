@@ -9,8 +9,7 @@ import Stepper from "../../components/stepper";
 import styles from "../../pages/home/HomePage.module.css";
 import ProgressControl from "../../components/progressControl";
 import items from "../../data/items";
-import {CartContext} from "../../context/CartContext";
-
+import { CartContext } from "../../context/CartContext";
 
 const HomePage = () => {
   const initMoney = items
@@ -36,13 +35,6 @@ const HomePage = () => {
     if (finalStep > 0 && finalStep < 4) setStep(finalStep);
   };
 
-  // const downStep = () => {
-  //   if (step > 1) setStep((prev) => prev - 1);
-  // };
-  // const upStep = () => {
-  //   if (step < 3) setStep((prev) => prev + 1);
-  // };
-
   return (
     <>
       <Header />
@@ -55,11 +47,6 @@ const HomePage = () => {
           </CartContext.Provider>
           {step === 3 && <CheckoutForm2 />}
           <ProgressControl step={step} onChangeStep={onChangeStep} />
-          {/* <ProgressControl
-        step={step}
-        onClickNext={upStep}
-        onClickBack={downStep}
-      /> */}
         </div>
         <CartContext.Provider value={providerValue}>
           <CheckoutShoppingCart />
