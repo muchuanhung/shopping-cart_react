@@ -1,81 +1,75 @@
 import React from "react";
 import styles from "./CheckoutForm1.module.scss";
+import { useCartContext } from "../../context/CartContext";
+
+type TransportMethodProps = {
+  method: string,
+  day: string,
+  money: number,
+  state: string,
+};
+
+const TransportMethod: React.FC<TransportMethodProps> = React.memo((props) => {
+  const { method, day, money, state, onSelect } = props;
+  const { setFare } = useCartContext();
+  const atRadioChange = (e) => {
+    onSelect(e.target.value);
+    setFare(money);
+  };
+  return (
+    <>
+       <label
+          htmlFor="standard-shipping"
+          className={styles["form-part__form-shipping-option"]}
+        >
+      <div className={styles["form-part__form-row"]} >
+   
+        <input
+          type="radio"
+          value={method}
+          checked={method === state}
+          onChange={atRadioChange}
+        />
+
+        <div className="d-flex">
+          <span className="inline-block text-black">{method}</span>
+          <span>{day}</span>
+        </div>
+
+      </div>
+
+      <div className={styles["form-part__form-shipping-option__shipping-fee"]}>
+        <div className="d-flex">{money ? `$${money}` : "免費"}</div>
+      </div>
+      </label>
+
+    </>
+  );
+});
 
 const CheckoutForm1 = () => {
+  const { fareState, setFareState } = useCartContext();
   return (
-    <form action="" className={styles.Form}>
+    <>
       <div className={styles["form-part"]}>
         <h2 className={styles["form-part__title"]}>運送方式</h2>
 
-        <div className={styles["form-part__form-row"]}>
-          <input
-            type="radio"
-            name="shipping"
-            id="standard-shipping"
-            value="standard"
-            checked
-            required
-          />
-          <label
-            for="standard-shipping"
-            className={styles["form-part__form-shipping-option"]}
-          >
-            <div
-              className={
-                styles["form-part__form-shipping-option__radio-circle"]
-              }
-            ></div>
-            <div className="d-flex">
-              <span className="inline-block text-black">標準運送</span>
-              <span>約 3-7 個工作天</span>
-            </div>
-            <div
-              className={
-                styles["form-part__form-shipping-option__shipping-fee"]
-              }
-            >
-              {/* {{ 0 | showPriceLabel }} */}
-            </div>
-          </label>
-        </div>
-        <div className={styles["form-part__form-row"]}>
-          <input
-            type="radio"
-            name="shipping"
-            id="DHL-shipping"
-            value="DHL"
-            required
-          />
-          <label
-            for="DHL-shipping"
-            className={styles["form-part__form-shipping-option"]}
-          >
-            <div
-              className={
-                styles["form-part__form-shipping-option__radio-circle"]
-              }
-            ></div>
-            <div
-              className={
-                styles[
-                  "form-part__form-shipping-option__shipping-desc flex-grow-1"
-                ]
-              }
-            >
-              <span className="inline-block text-black">DHL 貨運</span>
-              <span>48 小時內送達</span>
-            </div>
-            <div
-              className={
-                styles["form-part__form-shipping-option__shipping-fee"]
-              }
-            >
-              {/* {{ 500 | showPriceLabel }} */}
-            </div>
-          </label>
-        </div>
+        <TransportMethod
+          method="標準運送"
+          day="約3~7個工作天"
+          money={0}
+          state={fareState}
+          onSelect={setFareState}
+        />
+        <TransportMethod
+          method="DHL 貨運"
+          day="48小時內送達"
+          money={500}
+          state={fareState}
+          onSelect={setFareState}
+        />
       </div>
-    </form>
+    </>
   );
 };
 

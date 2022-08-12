@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from "react";
+import React, { useCallback } from "react";
 import cx from "classnames";
 import style from "./CheckoutShoppingCart.module.scss";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
@@ -13,22 +13,24 @@ type LineItemProps = {
   money: number,
 };
 
-// 下方的兩個函示建議使用 useCallback 包起來，這樣才不會因為組件重新 render 時，又重新宣告一次。
+// 如果你的function需要用到props或state必須在component scope裡面宣告同時會被超過一個useEffect使用時就建議以usecallback包起來
 const LineItem: React.FC<LineItemProps> = React.memo((props) => {
   const { name, image, initAmount, money } = props;
   const [amount, setAmount] = React.useState(initAmount);
   const { setTotal } = useCartContext();
 
-  const addAmount = () => {
+  const addAmount = useCallback(() => {
     setAmount(amount + 1);
-  };
+    setTotal((prve) => prve + money);
+  }, [amount, money, setTotal]);
 
-  const reduceAmount = () => {
+  const reduceAmount = useCallback(() => {
     if (amount > 0) {
       setAmount(amount - 1);
       setTotal((prve) => prve - money);
     }
-  };
+  }, [amount, money, setTotal]);
+
   return (
     <div className="m-3 d-flex justify-content-between">
       <img className={style.product_img} alt="img fail" src={image} />
@@ -37,7 +39,6 @@ const LineItem: React.FC<LineItemProps> = React.memo((props) => {
         <div
           className={cx(
             "d-flex",
-
             "justify-content-between",
             "align-items-center",
             style.amount_control
@@ -51,8 +52,7 @@ const LineItem: React.FC<LineItemProps> = React.memo((props) => {
           <FontAwesomeIcon icon={faPlus} onClick={addAmount}></FontAwesomeIcon>
         </div>
       </div>
-
-      <div className="ml-3 mt-3">{money}</div>
+      <div className="ml-3 mt-3">{money * amount}</div>
     </div>
   );
 });

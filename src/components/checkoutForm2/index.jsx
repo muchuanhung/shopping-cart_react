@@ -8,7 +8,7 @@ const CheckoutForm2 = () => {
         <h2 className={styles["form-part__title"]}>付款資訊</h2>
         <div className={styles["form-part__form-row"]}>
           <div className={styles["form-part__form-row__form-unit"]}>
-            <label for="credit-card-holder">持卡人姓名</label>
+            <label htmlFor="credit-card-holder">持卡人姓名</label>
             <input
               type="text"
               name="credit-card-holder"
@@ -19,7 +19,7 @@ const CheckoutForm2 = () => {
         </div>
         <div className={styles["form-part__form-row"]}>
           <div className={styles["form-part__form-row__form-unit"]}>
-            <label for="credit-card-no">卡號</label>
+            <label htmlFor="credit-card-no">卡號</label>
             <input
               type="text"
               name="credit-card-no"
@@ -30,7 +30,7 @@ const CheckoutForm2 = () => {
         </div>
         <div className={styles["form-part__form-row"]}>
           <div className={styles["form-part__form-row__form-unit flex-grow-1"]}>
-            <label for="credit-card-expiration">有效期限</label>
+            <label htmlFor="credit-card-expiration">有效期限</label>
             <input
               type="text"
               name="credit-card-expiration"
@@ -39,7 +39,7 @@ const CheckoutForm2 = () => {
             />
           </div>
           <div className={styles["form-part__form-row__form-unit flex-grow-1"]}>
-            <label for="CVC-CCV">CVC / CCV</label>
+            <label htmlFor="CVC-CCV">CVC / CCV</label>
             <input type="text" name="CVC-CCV" id="CVC-CCV" placeholder="123" />
           </div>
         </div>
