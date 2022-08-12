@@ -10,24 +10,53 @@ import styles from "../../pages/home/HomePage.module.css";
 import ProgressControl from "../../components/progressControl";
 import items from "../../data/items";
 import { CartContext } from "../../context/CartContext";
+import useShoppingCart from "../../hooks/useShoppingCart";
+import {
+  actionUpdateMoney,
+  actionSetInitMoney,
+  actionSetFare,
+} from "../../hooks/actions";
 
 const HomePage = () => {
-  const initMoney = items
-    .map((item) => item.price * item.quantity)
-    .reduce((a, b) => a + b);
+  const [state, dispatch] = useShoppingCart();
+  const atUpdateMoney = React.useCallback(
+    (money) => {
+      dispatch(actionUpdateMoney(money));
+    },
+    [dispatch]
+  );
+
+  const atSetInitMoney = React.useCallback(
+    (initMoney) => {
+      dispatch(actionSetInitMoney(initMoney));
+    },
+    [dispatch]
+  );
+
+  const atSetFare = React.useCallback(
+    (fare, fareState) => {
+      dispatch(actionSetFare(fare, fareState));
+    },
+    [dispatch]
+  );
+
+  React.useEffect(() => {
+    const initMoney = items
+      .map((item) => item.price * item.quantity)
+      .reduce((a, b) => a + b);
+    atSetInitMoney(initMoney);
+    return () => {
+      atSetInitMoney(0);
+    };
+  }, [atSetInitMoney]);
+
   const [step, setStep] = React.useState(1);
-  const [total, setTotal] = React.useState(initMoney);
-  const [fare, setFare] = React.useState(0);
-  const [fareState, setFareState] = React.useState("標準運送");
   const providerValue = {
     items,
-    total,
-    setTotal,
     step,
-    fare,
-    setFare,
-    fareState,
-    setFareState,
+    state,
+    onUpdateMoney: atUpdateMoney,
+    onSetFare: atSetFare,
   };
 
   const onChangeStep = (num) => {

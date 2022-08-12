@@ -17,19 +17,19 @@ type LineItemProps = {
 const LineItem: React.FC<LineItemProps> = React.memo((props) => {
   const { name, image, initAmount, money } = props;
   const [amount, setAmount] = React.useState(initAmount);
-  const { setTotal } = useCartContext();
+  const { onUpdateMoney } = useCartContext();
 
   const addAmount = useCallback(() => {
     setAmount(amount + 1);
-    setTotal((prve) => prve + money);
-  }, [amount, money, setTotal]);
+    onUpdateMoney(money);
+  }, [amount, money, onUpdateMoney]);
 
   const reduceAmount = useCallback(() => {
     if (amount > 0) {
       setAmount(amount - 1);
-      setTotal((prve) => prve - money);
+      onUpdateMoney(-money);
     }
-  }, [amount, money, setTotal]);
+  }, [amount, money, onUpdateMoney]);
 
   return (
     <div className="m-3 d-flex justify-content-between">
